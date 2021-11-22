@@ -26,6 +26,7 @@ public class ConnectionDB {
     }
 
     public Statement getStatement() {
+        getConnection();
         return statement;
     }
 }

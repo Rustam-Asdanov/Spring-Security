@@ -20,6 +20,4 @@ public enum UserRole {
     public Set<UserPermission> getUserPermissions() {
         return userPermissions;
     }
-
-
 }
