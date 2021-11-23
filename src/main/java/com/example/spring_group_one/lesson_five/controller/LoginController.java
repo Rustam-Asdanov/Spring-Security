@@ -11,8 +11,7 @@ public class LoginController {
     private String location = "/lesson_five/";
 
     @GetMapping("/login")
-    public String getLoginPage(Model model){
-        model.addAttribute("account", new Account());
+    public String getLoginPage(){
         return location + "login";
     }
 }

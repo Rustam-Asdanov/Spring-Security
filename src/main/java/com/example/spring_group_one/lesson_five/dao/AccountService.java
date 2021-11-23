@@ -18,6 +18,10 @@ public class AccountService {
     }
 
     public void addAccount(Account account){
-        accountDAO.insertAccount(account);
+            accountDAO.addAccount(account);
+    }
+
+    public Account findAccountByLogin(String username) {
+        return accountDAO.findAccountByLogin(username);
     }
 }

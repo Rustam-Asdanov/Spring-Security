@@ -16,15 +16,18 @@ public class ConnectionDB {
     private Connection conn;
     private Statement statement;
 
-    public boolean getConnection(){
+    private void startConnection(){
         try {
             conn = DriverManager.getConnection(URL,USERNAME,PASSWORD);
             statement = conn.createStatement();
         } catch (SQLException e) {
             System.out.println("Problem with connection");
-            return false;
         }
-        return true;
+    }
+
+    public Connection getConnection() {
+        startConnection();
+        return conn;
     }
 
     public Statement getStatement() {

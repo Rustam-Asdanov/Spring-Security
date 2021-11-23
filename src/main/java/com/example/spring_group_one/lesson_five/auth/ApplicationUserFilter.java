@@ -6,6 +6,7 @@ import com.google.common.collect.Lists;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,37 +18,34 @@ public class ApplicationUserFilter {
     private final AccountService accountService;
     private final PasswordEncoder passwordEncoder;
 
-    public ApplicationUserFilter(AccountService accountService, PasswordEncoder passwordEncoder) {
+    public ApplicationUserFilter(AccountService accountService,
+                                 PasswordEncoder passwordEncoder)
+    {
         this.accountService = accountService;
         this.passwordEncoder = passwordEncoder;
     }
 
-    public Optional<ApplicationUser> selectApplicationByUsername(String username){
-        return getApplicationUsers()
+    public Optional<ApplicationUser> selectApplicationByUsername(String username) {
+        List<ApplicationUser> applicationUserList = new ArrayList<>();
+        Account theAccount = accountService.findAccountByLogin(username);
+        applicationUserList.add(
+                new ApplicationUser(
+                        theAccount.getLogin(),
+                        passwordEncoder.encode(theAccount.getPassword()),
+                        GUEST.name(),
+                        GUEST.getGrantedAuthorities(),
+                        true,
+                        true,
+                        true,
+                        true
+                )
+        );
+
+
+        return applicationUserList
                 .stream()
                 .filter(applicationUser -> username.equals(applicationUser.getUsername()))
                 .findFirst();
-    }
-
-    private List<ApplicationUser> getApplicationUsers(){
-        List<ApplicationUser> applicationUserList = Lists.newArrayList();
-
-        for(Account theAccount : accountService.getAccountList()){
-            ApplicationUser applicationUser = new ApplicationUser(
-                    theAccount.getLogin(),
-                    passwordEncoder.encode(theAccount.getPassword()),
-                    GUEST.name(),
-                    GUEST.getGrantedAuthorities(),
-                    true,
-                    true,
-                    true,
-                    true
-            );
-
-            applicationUserList.add(applicationUser);
-        }
-
-        return applicationUserList;
     }
 
 }
