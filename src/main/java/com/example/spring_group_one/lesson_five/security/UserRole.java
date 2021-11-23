@@ -1,6 +1,7 @@
 package com.example.spring_group_one.lesson_five.security;
 
 import com.google.common.collect.Sets;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import java.util.Set;
 

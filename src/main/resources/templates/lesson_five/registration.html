@@ -19,7 +19,7 @@
 </head>
 <body>
 <div class="container">
-    <form class="form-signin" method="post" th:action="@{/add_new_user}" th:object="${new_account}">
+    <form class="form-signin" th:method="post" th:action="@{/lesson/five/add_new_user}" th:object="${new_account}">
         <h2 class="form-signin-heading">Registration</h2>
         <p>
             <label for="login" class="sr-only">Username</label>

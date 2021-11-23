@@ -12,13 +12,13 @@ import java.util.Set;
 @Component
 public class AccountDAO {
 
-
-    private final ConnectionDB connectionDB;
-
     @Autowired
-    public AccountDAO(ConnectionDB connectionDB) {
-        this.connectionDB = connectionDB;
-    }
+    private ConnectionDB connectionDB;
+
+//    @Autowired
+//    public AccountDAO(ConnectionDB connectionDB) {
+//        this.connectionDB = connectionDB;
+//    }
 
     public Set<Account> getAccounts(){
         Set<Account> accountSet = new HashSet<>();
