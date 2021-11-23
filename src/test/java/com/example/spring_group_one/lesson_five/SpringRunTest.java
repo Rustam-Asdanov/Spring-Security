@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class SpringRunTest {
@@ -18,7 +17,7 @@ class SpringRunTest {
     @Test
     void isAccountRegistered(){
         // given
-        Account account = new Account("mamed","mamde");
+        Account account = new Account("mamesd","mamde");
         String text = "redirect:/login";
         // when
         String result = controllerForEveryone.addUser(account);

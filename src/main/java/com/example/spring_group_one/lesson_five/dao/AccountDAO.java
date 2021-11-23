@@ -15,10 +15,7 @@ public class AccountDAO {
     @Autowired
     private ConnectionDB connectionDB;
 
-//    @Autowired
-//    public AccountDAO(ConnectionDB connectionDB) {
-//        this.connectionDB = connectionDB;
-//    }
+
 
     public Set<Account> getAccounts(){
         Set<Account> accountSet = new HashSet<>();

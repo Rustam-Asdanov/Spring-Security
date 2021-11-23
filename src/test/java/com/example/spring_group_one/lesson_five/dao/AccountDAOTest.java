@@ -17,7 +17,7 @@ class AccountDAOTest {
     @Test
     void isAddAccountWorks(){
         // given
-        Account account = new Account("mamed","mamed");
+        Account account = new Account("lulush","lulush");
         boolean result = true;
         // when
         try{

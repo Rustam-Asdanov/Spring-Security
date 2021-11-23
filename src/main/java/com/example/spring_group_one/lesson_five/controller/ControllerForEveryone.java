@@ -34,7 +34,6 @@ public class ControllerForEveryone {
     @PostMapping("/add_new_user")
     public String addUser(@ModelAttribute Account account){
         accountService.addAccount(account);
-        System.out.println(account);
         return "redirect:/login";
     }
 }
