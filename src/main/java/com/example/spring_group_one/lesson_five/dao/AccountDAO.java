@@ -1,7 +1,6 @@
 package com.example.spring_group_one.lesson_five.dao;
 
 import com.example.spring_group_one.lesson_five.model.Account;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.sql.ResultSet;
@@ -13,10 +12,11 @@ import java.util.Set;
 @Component
 public class AccountDAO {
 
-    @Autowired
-    private ConnectionDB connectionDB;
+    private final ConnectionDB connectionDB;
 
-
+    public AccountDAO(ConnectionDB connectionDB) {
+        this.connectionDB = connectionDB;
+    }
 
     public Set<Account> getAccounts(){
         Set<Account> accountSet = new HashSet<>();
