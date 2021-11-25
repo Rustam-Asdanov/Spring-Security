@@ -52,7 +52,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/login").permitAll()
-                .defaultSuccessUrl("/page",true);
+                .defaultSuccessUrl("/page",true)
+                .and()
+                .exceptionHandling().accessDeniedPage("/access-denied");
     }
 
     @Bean

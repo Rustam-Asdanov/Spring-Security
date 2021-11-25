@@ -14,4 +14,9 @@ public class LoginController {
     public String getLoginPage(){
         return location + "login";
     }
+
+    @GetMapping("/access-denied")
+    public String showAccessDenied(){
+        return "/lesson_five/" + "access-denied";
+    }
 }

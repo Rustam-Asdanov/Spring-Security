@@ -12,7 +12,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import static com.example.spring_group_one.lesson_five.security.UserPermission.READ;
 import static com.example.spring_group_one.lesson_five.security.UserPermission.WRITE;
-import static com.example.spring_group_one.lesson_five.security.UserRole.GUEST;
 
 @Configuration
 @EnableWebSecurity
@@ -40,6 +39,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/login").permitAll()
                 .defaultSuccessUrl("/lesson/five")
+                .and()
+                .exceptionHandling().accessDeniedPage("/access-denied")
                 .and()
                 .logout()
                 .logoutSuccessUrl("/lesson/five")

@@ -17,4 +17,9 @@ public class PageController {
     public String getLogoutPage(){
         return  "/lesson_three/logout";
     }
+
+    @GetMapping("access-denied")
+    public String showAccessDenied(){
+        return "/lesson_five/" + "access-denied";
+    }
 }
