@@ -31,7 +31,8 @@ public class ApplicationUserFilter {
         applicationUserList.add(
                 new ApplicationUser(
                         theAccount.getLogin(),
-                        passwordEncoder.encode(theAccount.getPassword()),
+//                        passwordEncoder.encode(theAccount.getPassword()),
+                        theAccount.getPassword(),
                         GUEST.name(),
                         GUEST.getGrantedAuthorities(),
                         true,
