@@ -22,4 +22,9 @@ public class PageController {
     public String showAccessDenied(){
         return "/lesson_five/" + "access-denied";
     }
+
+    @GetMapping
+    public String showPage(){
+        return "/lesson_three/main";
+    }
 }

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <h1>Thymleaf Security</h1>
+
+    <div sec:authorize="isAuthenticated()">
+
+        Logged user: <span sec:authentication="name">Bob</span><br>
+        Roles: <span sec:authentication="principal.authorities">ROLE_USER, ROLE_ADMIN</span>
+    </div>
+    <h1 sec:authorize="hasRole('ADMIN')">This text shows to Admins only</h1>
+    <h1 sec:authorize="hasAnyRole('GUEST','ADMIN')">This text for Admin and Users</h1>
+    <h1>This text for everyOne</h1>
+    <div sec:authorize="isAuthenticated()==false"> BYE</div>
+<!--    <h1 sec:authentication="principal.roles">Mamish</h1>-->
+
+    <hr/><hr/>
+
+    <h1>THYMLEAF simple</h1>
+
+    <div th:if="${#authorize}">
+
+        Logged user: <span sec:authentication="name">Bob</span><br>
+        Roles: <span sec:authentication="principal.authorities">ROLE_USER, ROLE_ADMIN</span>
+    </div>
+    <h1 style="color:red" th:if="${#authorization.expression('hasRole(''ADMIN'')')}">This text shows to Admins only</h1>
+<!--    <h1 th:if="${#authorization.expression('hasAnyRole(''ADMIN','GUEST'')')">This text for Admin and Users</h1>-->
+    <h1>This text for everyOne</h1>
+    <div style="color:red" th:if="${#authorization.expression('isAuthenticated()')}"> BYE</div>
+</body>
+</html>
