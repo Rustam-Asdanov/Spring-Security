@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+
+    <span th:if="${isActive}">Success</span>
+
+        <input type="input" name="messages" id="msg" th:field="${messages}">
+        <input type="button" value="send" onclick="sendMessage('/example/rest/c2/add')">
+
+
+        <input type="button" value="get" onclick="getMessage('/example/rest/c2/get')">
+
+        <textarea id="datas">
+
+        </textarea>
+
+    <script>
+<!--        /*<![CDATA[*/-->
+<!--            function sendMethod(URL){-->
+<!--                URL += "?messages=/*[[${messages}]]*/-->
+<!--                const req = XMLHttpRequest();-->
+<!--                req.open("GET",URL,true);-->
+<!--                req.send();-->
+<!--            }-->
+<!--        /*]]>*/-->
+
+        const messages = document.getElementById("msg");
+        const datas = document.getElementById("datas");
+
+        function sendMessage(URL){
+            const param = messages.value;
+            URL += "?messages=" + param;
+            const req = new XMLHttpRequest();
+            console.log("a:"+req.open("GET",URL,true));
+            console.log("b"+req.send());
+            console.log("Success");
+            messages.value = "";
+        }
+
+        function getMessage(URL){
+            const res = new XMLHttpRequest();
+            res.onload = function(){
+                datas.value = this.responseText;
+            }
+
+            res.open("GET",URL,true);
+            res.send();
+
+        }
+    </script>
+</body>
+</html>
